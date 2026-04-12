@@ -1,5 +1,7 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +22,11 @@ class MemberRepositoryTest {
     @Test
     public void testMember() throws Exception{
         Member member = new Member();
-        member.setUsername("memberA");
+        member.setName("memberA");
 
         Long saveId = memberRepository.save(member);
 
-        Member findMember = memberRepository.find(saveId);
+        Member findMember = memberRepository.findOne(saveId);
         System.out.println(member.getId());
         System.out.println(findMember.getId());
 
